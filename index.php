@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,8 +11,13 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>De Gokkers - Home</title>
+    <script>
+        function load() {
+            document.getElementById('registerForm').style.display="none";
+        }
+    </script>
 </head>
-<body>
+<body onload="load()">
     <header>
         <div class="container">
             <h1>De Gokkers</h1>
@@ -18,7 +26,7 @@
                     <a href="#info">Information</a>
                     <a href="#download">Download</a>
                 </div>
-                <a id="btnLogin"><i class="far fa-user"></i></a>
+                <a id="btnLogin" href="#"><i class="far fa-user"></i></a>
             </div>
         </div>
     </header>
@@ -27,12 +35,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <i class="fas fa-times close"></i>
-                    <h2>Login</h2>
+                    <h2 id="headertext">Login</h2>
                 </div>
                 <div class="modal-body">
-                    <form action="login.php" method="post">
+                    <form id="loginForm" action="login.php" method="post">
                         <div>
-                            <input type="email" placeholder="Email" id="email" name="email">
+                            <input type="text" placeholder="Username" id="username" name="username">
                         </div>
                         <div>
                             <input type="password" placeholder="Password" id="password" name="password">
@@ -40,48 +48,84 @@
                         <div>
                             <input type="submit" value="Login" id="loginButton" name="loginButton">
                         </div>
-                        <p>Don't yet have an account? <a href="">Click Here!</a></p>
+                        <p>Don't yet have an account? <a href="javascript:register()"">Click Here!</a></p>
+                    </form>
+                    <form id="registerForm" action="register.php" method="post">
+                        <div>
+                            <input type="text" placeholder="Username" id="username" name="username">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Email" id="email" name="email">
+                        </div>
+                        <div>
+                            <input type="password" placeholder="Password" id="password" name="password">
+                        </div>
+                        <div>
+                            <input type="submit" value="Register" id="registerButton" name="registerButton">
+                        </div>
+                        <p>Already have an account? <a href="javascript:login()">Login!</a></p>
                     </form>
                 </div>
             </div>
         </div>
         <div id="video">
             <div class="container">
-                <video controls>
-                    <source src="video.mp4" type="video/mp4">
-                    <source src="video.ogg" type="video/ogg">
-                    Your browser doesn't support video's!
-                </video>
+                <h2>Gameplay</h2>
+                <div>
+                    <video src="videos/gameplay.mp4" controls>
+                        Your browser does not support video.
+                    </video>
+                </div>
             </div>
         </div>
 
         <div id="info">
             <div class="container">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad aliquam, beatae delectus eligendi esse et
-                    ipsa ipsam laborum magni nobis perspiciatis quasi quis tempore veniam. Aliquam error est obcaecati?
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consequatur dolorum expedita maiores
-                    omnis, placeat, praesentium quasi quis, quos ratione recusandae sapiente similique. At fuga fugiat modi
-                    nulla quia temporibus? <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aut,
-                    blanditiis commodi corporis culpa debitis doloribus dolorum ducimus eius facere fugiat id inventore
-                    nostrum, porro quis rem repellat repudiandae sint?</span><span>A alias aliquid amet aperiam cumque
-                    delectus dolorum error et eum fugiat id incidunt inventore iure minima natus nesciunt nihil nulla porro,
-                    provident quisquam quod repellat reprehenderit repudiandae sapiente, ut.</span><span>Accusantium aliquam
-                    atque est harum nulla numquam obcaecati, omnis perspiciatis quae quaerat quas repellendus voluptates?
-                    Debitis doloribus esse ex exercitationem molestiae placeat! Ab, accusamus aspernatur eius labore
-                    molestias recusandae vitae!</span><span>Ad alias aut cum delectus dicta doloribus ducimus eveniet
-                    expedita fugiat id iste iusto laboriosam magni necessitatibus nihil obcaecati odit praesentium provident
-                    quia, quos repellendus repudiandae tempore, ut velit veritatis!</span><span>Cumque, dicta, eius? Alias
-                    asperiores blanditiis cumque est explicabo facere fugiat illo ipsa, iste iusto minus mollitia, natus
-                    non, quaerat quia recusandae repellat soluta sunt temporibus vel veritatis vero voluptatem!</span>
-                </p>
+                <div class="title">
+                    <i class="fas fa-info"></i><h2>Information</h2>
+                </div>
+                <div class="items">
+                    <div class="item">
+                        <h3>Game Info</h3>
+                        <p>
+                            The objective of this game is to earn money by betting on animals, in this version of the game
+                            you can bet on; dolphins, sharks and fishes. You can bet on either fish #1, #2, #3 or #4. If
+                            the fish you bet on won the race you will win double your bet amount! If the fish loses you
+                            will lose the betted money! you are game over if you're out of money.
+                        </p>
+                    </div>
+                    <div class="item">
+                        <h3>Instrucion</h3>
+                        <p>
+                            To get started, run the executable file. On the left side of the program you can choose who is
+                            betting. In the center you can choose what animals are racing against each other, to apply your
+                            choice you must click the 'choose' button. Also in the center you can set the amount and on what
+                            animal you want to bet. To bet click the 'Wedt' button. To start the race click the
+                            'Start Race' button. And last, you can see what everyone betted and on what animal they did on
+                            the right!
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div id="download">
-
+            <div class="container">
+                <?php
+                    if (isset($_SESSION['isLoggedin']) && $_SESSION['isLoggedin'] == true) {
+                ?>
+                <a href="">Download</a>
+                <?php
+                    } else {
+                ?>
+                <p>To download the gokkers your need to be logged in! <a id="btnLogin" href="#">Click here!</a></p>
+                 <?php
+                    }
+                ?>
+            </div>
         </div>
     </main>
+
     <script>
         var modal = document.getElementById('login');
 
@@ -101,6 +145,39 @@
             if (event.target == modal) {
                 modal.style.display = "none";
             }
+        }
+
+        function validation()
+        {
+
+            var check=document.getElementById('email').type;
+            if(check=="email")
+            {
+                var value=document.getElementById('email').value;
+                if(value=="")
+                {
+
+                    document.getElementById('error').innerHTML="Incorrect Email Address";
+
+                }
+            }
+        }
+
+    </script>
+    <script>
+
+        function register() {
+            //document.getElementById('registerForm').style.height="100%";
+            document.getElementById('registerForm').style.display="block";
+            document.getElementById('loginForm').style.display="none";
+            document.getElementById('headertext').textContent = "Register";
+            //document.getElementById('header').style="display:none";
+        }
+        function login() {
+            document.getElementById('registerForm').style.display="none";
+            document.getElementById('loginForm').style.display="block";
+            document.getElementById('headertext').textContent = "Login";
+            //document.getElementById('header').style="display:none";
         }
     </script>
 </body>
