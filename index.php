@@ -10,6 +10,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <title>De Gokkers - Home</title>
     <script>
         function load() {
@@ -18,15 +20,28 @@
     </script>
 </head>
 <body onload="load()">
+<div class="back-top"><i class="fas fa-chevron-up"></i></div>
     <header>
         <div class="container">
             <h1>De Gokkers</h1>
             <div>
                 <div>
-                    <a href="#info">Information</a>
-                    <a href="#download">Download</a>
+                    <a id="btnInfo">Information</a>
+                    <a id="btnDownload">Download</a>
                 </div>
-                <a id="btnLogin" href="#"><i class="far fa-user"></i></a>
+                <?php
+                    if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true) {
+
+                    echo "<p>" . $_SESSION['username'] . "</p>";
+                ?>
+                        <a href="logout.php">Logout</a>
+                <?php
+                }else{
+                ?>
+                    <a id="btnLogin"><i class="far fa-user"></i></a>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </header>
@@ -112,7 +127,7 @@
         <div id="download">
             <div class="container">
                 <?php
-                    if (isset($_SESSION['isLoggedin']) && $_SESSION['isLoggedin'] == true) {
+                    if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true) {
                 ?>
                 <a href="">Download</a>
                 <?php
@@ -127,6 +142,35 @@
     </main>
 
     <script>
+        $(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 200) {
+                    $('.back-top').fadeIn();
+                } else {
+                    $('.back-top').fadeOut();
+                }
+            });
+
+            // scroll body to 0px on click
+            $('.back-top').click(function () {
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 1000);
+                return false;
+            });
+        });
+
+
+        var info = document.getElementById('btnInfo');
+        var download = document.getElementById('btnDownload');
+
+        info.onclick = function () {
+            document.getElementById('info').scrollIntoView({behavior: 'smooth'});
+        }
+        download.onclick = function (){
+            document.getElementById('download').scrollIntoView({behavior: 'smooth'});
+        }
+
         var modal = document.getElementById('login');
 
         var btn = document.getElementById("btnLogin");
@@ -167,18 +211,15 @@
     <script>
 
         function register() {
-            //document.getElementById('registerForm').style.height="100%";
             document.getElementById('registerForm').style.display="block";
             document.getElementById('loginForm').style.display="none";
             document.getElementById('headertext').textContent = "Register";
-            //document.getElementById('header').style="display:none";
         }
         function login() {
             document.getElementById('registerForm').style.display="none";
             document.getElementById('loginForm').style.display="block";
             document.getElementById('headertext').textContent = "Login";
-            //document.getElementById('header').style="display:none";
         }
-    </script>
+            </script>
 </body>
 </html>
