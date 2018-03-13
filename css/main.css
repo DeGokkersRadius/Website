@@ -124,6 +124,18 @@ main{
     background-repeat: no-repeat;
     background-blend-mode: color;
 }
+.back-top{
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    bottom: 4%;
+    right: 2%;
+    display: none;
+    cursor: pointer;
+}
+.back-top i{
+    font-size: 2em;
+}
 
 /* HEADER */
 header{
@@ -148,6 +160,7 @@ header .container > div > div{
 }
 header .container a{
     transition: color 0.4s ease-in-out;
+    cursor: pointer;
 }
 header .container a:hover{
     color: #75BAFD;
