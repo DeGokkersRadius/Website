@@ -30,9 +30,7 @@
                     <a id="btnDownload">Download</a>
                 </div>
                 <?php
-                    if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true) {
-
-                    echo "<p>" . $_SESSION['username'] . "</p>";
+                    if (isset($_SESSION['isLoggedIn'])) {
                 ?>
                         <a href="logout.php">Logout</a>
                 <?php
@@ -44,6 +42,11 @@
                 ?>
             </div>
         </div>
+        <?php
+            if (isset($_SESSION['isLoggedIn'])) {
+                 echo "<p class='curruser'>" . $_SESSION['currentUser'] . "</p>";
+             }
+         ?>
     </header>
     <main>
         <div id="login" class="modal">
@@ -53,9 +56,9 @@
                     <h2 id="headertext">Login</h2>
                 </div>
                 <div class="modal-body">
-                    <form id="loginForm" action="login.php" method="post">
+                    <form id="loginForm" action="../app/LoginHandler.php" method="POST">
                         <div>
-                            <input type="text" placeholder="Username" id="username" name="username">
+                            <input type="text" placeholder="Username" id="userName" name="userName">
                         </div>
                         <div>
                             <input type="password" placeholder="Password" id="password" name="password">
@@ -65,9 +68,9 @@
                         </div>
                         <p>Don't yet have an account? <a href="javascript:register()"">Click Here!</a></p>
                     </form>
-                    <form id="registerForm" action="register.php" method="post">
+                    <form id="registerForm" action="../app/AccountHandler.php" method="POST">
                         <div>
-                            <input type="text" placeholder="Username" id="username" name="username">
+                            <input type="text" placeholder="Username" id="userName" name="userName">
                         </div>
                         <div>
                             <input type="email" placeholder="Email" id="email" name="email">
@@ -127,7 +130,7 @@
         <div id="download">
             <div class="container">
                 <?php
-                    if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == true) {
+                    if (isset($_SESSION['isLoggedIn'])) {
                 ?>
                 <a href="">Download</a>
                 <?php
