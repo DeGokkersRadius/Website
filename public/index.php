@@ -36,7 +36,7 @@
                 <?php
                 }else{
                 ?>
-                    <a id="btnLogin"><i class="far fa-user"></i></a>
+                    <a id="LoginIcon"><i class="far fa-user"></i></a>
                 <?php
                 }
                 ?>
@@ -44,7 +44,7 @@
         </div>
         <?php
             if (isset($_SESSION['isLoggedIn'])) {
-                 echo "<p class='curruser'>" . $_SESSION['currentUser'] . "</p>";
+                 echo "<p class='curruser'>Logged in as " . $_SESSION['currentUser'] . "</p>";
              }
          ?>
     </header>
@@ -75,8 +75,13 @@
                         <div>
                             <input type="email" placeholder="Email" id="email" name="email">
                         </div>
-                        <div>
+                        <div class="password">
                             <input type="password" placeholder="Password" id="password" name="password">
+                            <label for="password">The password needs to have atleast 1 number 1 special character
+                            and 1 uppercase letter and atleast 7 characters long!</label>
+                        </div>
+                        <div class="terms">
+                            <label class="termstext"><input type="checkbox" value="1" name="termsbox" id="termsbox"/> I accept the <a href="tos.html">Terms and Conditions</a></label>
                         </div>
                         <div>
                             <input type="submit" value="Register" id="registerButton" name="registerButton">
@@ -112,8 +117,8 @@
                             will lose the betted money! you are game over if you're out of money.
                         </p>
                     </div>
-                    <div class="item">
-                        <h3>Instrucion</h3>
+                    <div class="item instruction">
+                        <h3>Instruction</h3>
                         <p>
                             To get started, run the executable file. On the left side of the program you can choose who is
                             betting. In the center you can choose what animals are racing against each other, to apply your
@@ -132,11 +137,11 @@
                 <?php
                     if (isset($_SESSION['isLoggedIn'])) {
                 ?>
-                <a href="">Download</a>
+                <a class="downloadbtn" href="download.php">Download 'De Gokkers'</a>
                 <?php
                     } else {
                 ?>
-                <p>To download the gokkers your need to be logged in! <a id="btnLogin" href="#">Click here!</a></p>
+                <p>To download the gokkers your need to be logged in! <a id="btnLogin">Click here!</a></p>
                  <?php
                     }
                 ?>
@@ -176,11 +181,15 @@
 
         var modal = document.getElementById('login');
 
-        var btn = document.getElementById("btnLogin");
+        var LoginIcon = document.getElementById("LoginIcon");
+        var Loginbtn = document.getElementById("btnLogin");
 
         var span = document.getElementsByClassName("close")[0];
 
-        btn.onclick = function () {
+        LoginIcon.onclick = function () {
+            modal.style.display = "block";
+        }
+        Loginbtn.onclick = function () {
             modal.style.display = "block";
         }
 

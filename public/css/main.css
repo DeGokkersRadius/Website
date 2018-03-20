@@ -135,12 +135,33 @@ main{
 }
 .back-top i{
     font-size: 2em;
+    transition: color 0.4s ease-in-out;
+}
+.back-top:hover > i{
+    color: #75BAFD;
+}
+.container.tos{
+    display: flex;
+    justify-content: center;
+}
+.container.tos a{
+    color: #000;
+}
+#tos{
+    width: 900px;
+    height: 900px;
+    resize: none;
+    text-align: center;
+    margin-top: 15px;
+    color: #000;
 }
 
 /* HEADER */
 header{
     background: rgba(1, 105, 206, 0.8);
     position: fixed;
+    display: flex;
+    align-items: center;
     width: 100%;
 }
 header .container{
@@ -162,13 +183,18 @@ header .container a{
     transition: color 0.4s ease-in-out;
     cursor: pointer;
 }
+header .container i{
+    transition: color 0.4s ease-in-out;
+}
+header .container i:hover{
+    color: #75BAFD;
+}
 header .container a:hover{
     color: #75BAFD;
 }
-header .username{
+header .curruser{
     text-align: right;
-    align-self: center;
-
+    margin-right: 100px;
 }
 
 
@@ -270,7 +296,13 @@ header .username{
 .modal-body p{
     margin: 10px 0 50px 0;
 }
-
+.termstext{
+    font-size: 0.8em;
+}
+.password label{
+    font-size: 0.7em;
+    width: 270px;
+}
 
 /* VIDEO */
 #video{
@@ -334,9 +366,81 @@ header .username{
 #download .container{
     text-align: center;
 }
+#download .container a{
+    transition: color 0.4s ease-in-out;
+    cursor: pointer;
+}
+#download .container a:hover{
+    color: #75BAFD;
+}
+#download .container .downloadbtn{
+    color: #fff;
+    padding: 20px 30px;
+    background: rgb(10, 100, 250);
+    transition: all 0.5s;
+}
+#download .container .downloadbtn:hover{
+    background: rgb(10, 120, 255);
+    color: #fff;
+    border-radius: 50px;
+}
 
 
 
+/* RESPONSIVENESS */
+@media (max-width: 950px) {
+    .container{
+        width: 85%;
+    }
+    #info .container{
+        width: 95%;
+    }
+}
+@media (max-width: 880px){
+    html{
+        font-size: 13px;
+    }
+}
+@media (max-width: 860px){
+    #info .container .items .item{
+        margin-right: 15px;
+    }
+    #info .container .items .instruction{
+        margin-right: 0;
+        margin-left: 15px;
+    }
+}
+@media (max-width: 800px){
+    .container{
+        width: 95%;
+    }
+}
+@media (max-width: 750px){
+    header .container{
+        flex-direction: column;
+        padding-bottom: 10px;
+    }
+    .modal-content{
+        width: 80%;
+    }
+}
+@media (max-width: 720px){
+    #video .container video{
+        width: 100%;
+    }
+}
+@media (max-width: 670px){
+    #info .container .items{
+        flex-direction: column;
+    }
+    #info .container .items .item{
+        margin: 0;
+        padding: 0;
+    }
+    #info .container .items .instruction{
+        margin-top: 30px;
+    }
+}
 
 /* ==========================================================================
    Helper classes

@@ -7,16 +7,14 @@
  */
 session_start();
 
-$servername = "localhost";
-$user = "root";
-$pass = "";
-$dbname = "gokkers";
+$user = "d251471_kevin";
+$pass = "h5TT7fQayA";
 
 if (!empty($_POST["userName"]) && !empty($_POST["password"])){
 
-    $conn = new PDO('mysql:host=localhost;dbname=gokkers',$user, $pass);
-    $sql = "SELECT * FROM users   ";
-    $query = $conn->prepare( $sql );
+    $conn = new PDO('mysql:host=localhost;dbname=d251471_gokkers',$user, $pass);
+    $sql = "SELECT * FROM users";
+    $query = $conn->prepare($sql);
     $query->execute();
     $results = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -35,3 +33,4 @@ if (!empty($_POST["userName"]) && !empty($_POST["password"])){
 else{
     echo "Please (completely) fill in the form.";
 }
+?>
